@@ -12,16 +12,18 @@ describe('CoinChanger', function() {
   })
 
   describe('#countChange', function() {
-    it('returns false if coins sum is not equal to money', function() {
-      var money = 4
-      var coins = [1,2]
-      expect(coinChanger.countChange(money, coins)).toBe(false);
+    it('returns number of ways to give change', function() {
+      var money = 10
+      var coins = [5, 2, 3]
+      coinChanger.countChange(money, coins)
+      expect(coinChanger.resultArray).toEqual([1, 1, 1, 1]);
     });
 
-    it('returns true if coins sum is equal to money', function() {
-      var money = 4
-      var coins = [2,2]
-      expect(coinChanger.countChange(money, coins)).toBe(true);
+    it('returns empty array if no way to give change', function() {
+      var money = 11
+      var coins = [5, 7]
+      coinChanger.countChange(money, coins)
+      expect(coinChanger.resultArray).toEqual([]);
     });
   });
 });
